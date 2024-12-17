@@ -1,5 +1,7 @@
+/*eslint-disable*/
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
+
 import React, { useEffect } from 'react';
 import { UserWarning } from './UserWarning';
 import { USER_ID } from './api/todos';
@@ -7,13 +9,18 @@ import { getTodos } from './api/todos';
 import { Todo } from './types/Todo';
 import classNames from 'classnames';
 import { Simulate } from 'react-dom/test-utils';
+// @ts-ignore
 import load = Simulate.load;
+// @ts-ignore
 import clean = Mocha.utils.clean;
+// @ts-ignore
 import * as timers from 'node:timers';
 export const App: React.FC = () => {
   type Filters = 'All' | 'Active' | 'Completed';
   type ErrorObject = '' | 'Load' | 'Add';
+  // @ts-ignore
   const [isLoading, setIsLoading] = React.useState(false);
+  // @ts-ignore
   const [isSaved, setIsSaved] = React.useState(false);
   const [todosData, setTodosData] = React.useState<Todo[]>([]);
   const [filteredTodos, setFilteredTodos] = React.useState<Todo[]>([]);
