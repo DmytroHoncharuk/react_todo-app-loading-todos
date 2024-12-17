@@ -18,10 +18,6 @@ import * as timers from 'node:timers';
 export const App: React.FC = () => {
   type Filters = 'All' | 'Active' | 'Completed';
   type ErrorObject = '' | 'Load' | 'Add';
-  // @ts-ignore
-  const [isLoading, setIsLoading] = React.useState(false);
-  // @ts-ignore
-  const [isSaved, setIsSaved] = React.useState(false);
   const [todosData, setTodosData] = React.useState<Todo[]>([]);
   const [filteredTodos, setFilteredTodos] = React.useState<Todo[]>([]);
   const [error, setError] = React.useState<ErrorObject>('');
@@ -35,17 +31,14 @@ export const App: React.FC = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        setIsLoading(true);
 
         const currentTodos = await getTodos();
 
         setTodosData(currentTodos);
 
-        setIsSaved(true);
       } catch (err) {
         setError('Load');
       } finally {
-        setIsLoading(false);
       }
     };
 
